@@ -23,34 +23,40 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
 
     // Dois iguas = empate
-    if (humanChoice === computerChoice) 
+    if (humanChoice === computerChoice) {
         return console.log('Empate')
-
+    }
     // pedra - papel = papel
-    else if (humanChoice == 'pedra' && computerChoice == 'papel')   
-        return console.log('Papel ganhou 1')
-
+    else if (humanChoice == 'pedra' && computerChoice == 'papel') {
+        computerScore = ++computerScore
+        return console.log('Papel ganhou')
+    }
     // pedra - tesoura = pedra
-    else if (humanChoice == 'pedra' && computerChoice == 'tesoura')
-        return console.log('Pedra ganhou 2')
-
+    else if (humanChoice == 'pedra' && computerChoice == 'tesoura') {
+        humanScore = ++humanScore
+        return console.log('Pedra ganhou')
+    }  
     // papel - tesoura = tesoura
-    else if (humanChoice == 'papel' && computerChoice == 'tesoura')
-        return console.log('Tseoura ganhou 3')
-
+    else if (humanChoice == 'papel' && computerChoice == 'tesoura') {
+        computerScore = ++computerScore
+        return console.log('Tseoura ganhou')
+    }
     // papel - pedra = papel
-    else if (humanChoice == 'papel' && computerChoice == 'pedra')
-        return console.log('Papel ganhou 4')
-
+    else if (humanChoice == 'papel' && computerChoice == 'pedra') {
+        humanScore = ++humanScore
+        return console.log('Papel ganhou')
+    }
     // tesoura - papel = tesoura
-    else if (humanChoice == 'tesoura' && computerChoice == 'papel')
-        return console.log('Tesoura ganhou 5')
-
+    else if (humanChoice == 'tesoura' && computerChoice == 'papel') {
+        humanScore = ++humanScore
+        return console.log('Tesoura ganhou')
+    }
     // tesoura - pedra = pedra
-    else if (humanChoice == 'tesoura' && computerChoice == 'pedra')
-        return console.log('Pedra ganhou 6')
+    else if (humanChoice == 'tesoura' && computerChoice == 'pedra') {
+        computerScore = ++computerScore
+        return console.log('Pedra ganhou')
+    }
 }
-
 const humanSelection = getHumanChoice()
 const computerSelection = getComputerChoice()
 
