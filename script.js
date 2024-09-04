@@ -12,52 +12,65 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let choice = window.prompt('Your Choice', 'Rock, Paper, Scissor')
+    let choice = window.prompt('Your Choice')
     choice = choice.toLowerCase()
     return choice
 }
-
-let humanScore = 0;
-let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
 
     // Dois iguas = empate
     if (humanChoice === computerChoice) {
-        return console.log('Empate')
+        return 'Empate'
     }
     // pedra - papel = papel
     else if (humanChoice == 'pedra' && computerChoice == 'papel') {
-        computerScore = ++computerScore
-        return console.log('Papel ganhou')
+        return 'computador'
     }
     // pedra - tesoura = pedra
     else if (humanChoice == 'pedra' && computerChoice == 'tesoura') {
-        humanScore = ++humanScore
-        return console.log('Pedra ganhou')
+        return 'humano'
     }  
     // papel - tesoura = tesoura
     else if (humanChoice == 'papel' && computerChoice == 'tesoura') {
-        computerScore = ++computerScore
-        return console.log('Tseoura ganhou')
+        return 'computador'
     }
     // papel - pedra = papel
     else if (humanChoice == 'papel' && computerChoice == 'pedra') {
-        humanScore = ++humanScore
-        return console.log('Papel ganhou')
+        return 'humano'
     }
     // tesoura - papel = tesoura
     else if (humanChoice == 'tesoura' && computerChoice == 'papel') {
-        humanScore = ++humanScore
-        return console.log('Tesoura ganhou')
+        return 'humano'
     }
     // tesoura - pedra = pedra
     else if (humanChoice == 'tesoura' && computerChoice == 'pedra') {
-        computerScore = ++computerScore
-        return console.log('Pedra ganhou')
+        return 'computador'
     }
 }
-const humanSelection = getHumanChoice()
-const computerSelection = getComputerChoice()
 
-playRound(humanSelection, computerSelection)
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for ( let rounds = 0; rounds <5; rounds++){
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+
+        let result = playRound(humanSelection, computerSelection)
+        if (result === 'computador') {
+            computerScore++
+        } else if (result === 'humano') { 
+            humanScore++    
+        }
+        else { console.log('Empate')
+            humanScore++
+            computerScore++
+        }
+
+        console.log(`Rodada numero ${rounds + 1}: Seu Score ${humanScore}, Computador ${computerScore}`);
+    }
+    console.log(`Final: Seu Score ${humanScore}, Computador ${computerScore}`);
+}
+
+playGame()
