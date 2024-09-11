@@ -53,7 +53,7 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
-    for ( let rounds = 0; rounds <5; rounds++){
+    for ( let rounds = 0; rounds <1; rounds++){
         let humanSelection = getHumanChoice();
         let computerSelection = getComputerChoice();
 
@@ -73,4 +73,3 @@ function playGame() {
     console.log(`Final: Seu Score ${humanScore}, Computador ${computerScore}`);
 }
 
-playGame()
