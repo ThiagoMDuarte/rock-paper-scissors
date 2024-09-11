@@ -11,10 +11,14 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
+function getHumanChoice(e) {
+    console.log(e.target.id)
+    return e.target.id
+    /* 
     let choice = window.prompt('Your Choice')
     choice = choice.toLowerCase()
     return choice
+     */
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -49,7 +53,7 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
+/* function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
@@ -72,4 +76,13 @@ function playGame() {
     }
     console.log(`Final: Seu Score ${humanScore}, Computador ${computerScore}`);
 }
+ */
+
+
+
+const element = document.querySelectorAll("button.jogada");
+
+    for (var i = 0; i <element.length; i++) {
+        element[i].addEventListener("click",getHumanChoice)
+    }
 
