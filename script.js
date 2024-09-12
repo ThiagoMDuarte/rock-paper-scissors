@@ -3,6 +3,8 @@ let rodadaAtual = 0
 let placarHumano = 0
 let placarComputador = 0
 
+const placar = document.querySelector('.placar')
+
 const buttons = document.querySelectorAll("button.jogada");
 
 buttons.forEach(button => {
@@ -12,10 +14,14 @@ buttons.forEach(button => {
             const computerChoice = getComputerChoice();
             const result = playRound(humanChoice, computerChoice);
 
-            console.log(`Rodada ${rodadaAtual}`);
+            console.log(`Rodada ${rodadaAtual + 1}`);
             console.log(`Jogada humano: ${humanChoice}`);
             console.log(`Jogada computador: ${computerChoice}`);
             console.log(`Resultado: ${result}`);
+
+            let pontosRodada = document.createElement("li")
+            pontosRodada.textContent = `Rodada: ${result}`
+            placar.appendChild(pontosRodada)
 
             // Atualizar o placar
             if (result === 'humano') {
@@ -24,24 +30,34 @@ buttons.forEach(button => {
                 placarComputador++;
             }
 
-            console.log(`Placar: Humano ${placarHumano} - ${placarComputador} Computador`);
+            let placarRodada = document.createElement('span')
+            placarRodada.textContent = `Humano ${placarHumano} - ${placarComputador} Computador`
+            placar.appendChild(placarRodada)
+
 
             rodadaAtual++;
 
             // Verifica se o jogo acabou
-            if (rodadaAtual > totalRodadas) {
+            if (rodadaAtual >= totalRodadas) {
+                let resultadoFinal = document.createElement('p')
+
                 if (placarHumano > placarComputador) {
-                    console.log("O humano venceu o jogo!");
+                    resultadoFinal.textContent = "O humano venceu o jogo!"
+                    placar.appendChild(resultadoFinal)
                 } else if (placarHumano < placarComputador) {
-                    console.log("O computador venceu o jogo!");
+                    resultadoFinal.textContent = "O Computador venceu o jogo!"
+                    placar.appendChild(resultadoFinal)
                 } else {
-                    console.log("O jogo terminou em empate!");
+                    resultadoFinal.textContent = "O jogo terminou em empate!"
+                    placar.appendChild(resultadoFinal)
                 }
             } /* Esse else fecha o if la de Cima esse => 
                 if (rodadaAtual <= totalRodadas) { */
         } // Se nao tiver mais rodadas roda esse else 
         else {
-            console.log("O jogo terminou. Recarregue a página para jogar novamente.");
+            let recarregar = document.createElement('span')
+            recarregar.textContent = "O jogo terminou. Recarregue a página para jogar novamente."
+            placar.appendChild(recarregar)
         }
     });
 });
