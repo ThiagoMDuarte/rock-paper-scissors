@@ -9,18 +9,14 @@ const buttons = document.querySelectorAll("button.jogada");
 
 buttons.forEach(button => {
     button.addEventListener("click", function (event) {
-        if (rodadaAtual <= totalRodadas) {
+        if (rodadaAtual < totalRodadas) {
             const humanChoice = event.target.id;
             const computerChoice = getComputerChoice();
             const result = playRound(humanChoice, computerChoice);
 
-            console.log(`Rodada ${rodadaAtual + 1}`);
-            console.log(`Jogada humano: ${humanChoice}`);
-            console.log(`Jogada computador: ${computerChoice}`);
-            console.log(`Resultado: ${result}`);
-
             let pontosRodada = document.createElement("li")
-            pontosRodada.textContent = `Rodada: ${result}`
+            pontosRodada.classList.add('pontosRodada')
+            pontosRodada.textContent = `Vencedor da Rodada: ${result}`
             placar.appendChild(pontosRodada)
 
             // Atualizar o placar
@@ -30,7 +26,8 @@ buttons.forEach(button => {
                 placarComputador++;
             }
 
-            let placarRodada = document.createElement('span')
+            let placarRodada = document.createElement('li')
+            placarRodada.classList.add('placarRodada')
             placarRodada.textContent = `Humano ${placarHumano} - ${placarComputador} Computador`
             placar.appendChild(placarRodada)
 
@@ -40,6 +37,7 @@ buttons.forEach(button => {
             // Verifica se o jogo acabou
             if (rodadaAtual >= totalRodadas) {
                 let resultadoFinal = document.createElement('p')
+                resultadoFinal.classList.add('resultadoFinal')
 
                 if (placarHumano > placarComputador) {
                     resultadoFinal.textContent = "O humano venceu o jogo!"
@@ -55,8 +53,10 @@ buttons.forEach(button => {
                 if (rodadaAtual <= totalRodadas) { */
         } // Se nao tiver mais rodadas roda esse else 
         else {
-            let recarregar = document.createElement('span')
-            recarregar.textContent = "O jogo terminou. Recarregue a página para jogar novamente."
+            let recarregar = document.createElement('li')
+            recarregar.classList.add('recarregar')
+            recarregar.setAttribute('style', 'white-space: pre;')
+            recarregar.textContent = 'O jogo terminou. Recarregue a página para jogar novamente.'
             placar.appendChild(recarregar)
         }
     });

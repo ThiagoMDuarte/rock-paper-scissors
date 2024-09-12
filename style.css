@@ -14,7 +14,19 @@ section {
     border: 2px solid rgb(82, 79, 79);
     align-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: rgb(177, 177, 177);
 }
+.escolha {
+    flex-shrink: 2;
+}
+.placar {
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
 img {
     width: 200px;
     height: 250px;
@@ -26,6 +38,27 @@ button {
     width: 60px;
 }
 
-#seletor {
-    align-self: center;
+ul {
+    list-style: none;
+}
+li {
+    list-style: none;
+}
+.scoreTitle {
+    font-weight: bold;
+    margin: 5px;
+}
+.placarRodada {
+    color:blue
+}
+.recarregar {
+    font-weight: bold;
+    color: red;
+}
+.pontosRodada {
+    color: rgb(0, 83, 12);
+}
+.resultadoFinal {
+    font-weight: bold;
+    font-size: large;
 }
