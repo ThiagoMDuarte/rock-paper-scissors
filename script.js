@@ -1,88 +1,38 @@
+const buttons = document.querySelectorAll("button.jogada");
+
+buttons.forEach(button => {
+    button.addEventListener("click", function (event) {
+
+        const humanChoice = event.target.id;
+        const computerChoice = getComputerChoice();
+        const result = playRound(humanChoice, computerChoice);
+
+        console.log(`Jogada humano: ${humanChoice}`);
+        console.log(`Jogada computador: ${computerChoice}`);
+        console.log(`Quem ganhou: ${result}`);
+    });
+});
+
+
 function getComputerChoice() {
-    const max = 3
-    choice = Math.floor(Math.random() * max)
-    if (choice == 1) {
-        return 'pedra'
-    }
-    else if (choice == 0) {
-        return 'pedra'
-    } else {
-        return 'papel'
-    }
+    const choices = ['pedra', 'papel', 'tesoura'];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
 }
 
-function getHumanChoice(e) {
-    console.log(e.target.id)
-    return e.target.id
-    /* 
-    let choice = window.prompt('Your Choice')
-    choice = choice.toLowerCase()
-    return choice
-     */
-}
 
+// Retorna quem Ganha a Rodada
 function playRound(humanChoice, computerChoice) {
-
-    // Dois iguas = empate
     if (humanChoice === computerChoice) {
-        return 'Empate'
+        return 'Empate';
     }
-    // pedra - papel = papel
-    else if (humanChoice == 'pedra' && computerChoice == 'papel') {
-        return 'computador'
-    }
-    // pedra - tesoura = pedra
-    else if (humanChoice == 'pedra' && computerChoice == 'tesoura') {
-        return 'humano'
-    }  
-    // papel - tesoura = tesoura
-    else if (humanChoice == 'papel' && computerChoice == 'tesoura') {
-        return 'computador'
-    }
-    // papel - pedra = papel
-    else if (humanChoice == 'papel' && computerChoice == 'pedra') {
-        return 'humano'
-    }
-    // tesoura - papel = tesoura
-    else if (humanChoice == 'tesoura' && computerChoice == 'papel') {
-        return 'humano'
-    }
-    // tesoura - pedra = pedra
-    else if (humanChoice == 'tesoura' && computerChoice == 'pedra') {
-        return 'computador'
+    if (
+        (humanChoice === 'pedra' && computerChoice === 'tesoura') ||
+        (humanChoice === 'papel' && computerChoice === 'pedra') ||
+        (humanChoice === 'tesoura' && computerChoice === 'papel')
+    ) {
+        return 'humano';
+    } else {
+        return 'computador';
     }
 }
-
-/* function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-
-    for ( let rounds = 0; rounds <1; rounds++){
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-
-        let result = playRound(humanSelection, computerSelection)
-        if (result === 'computador') {
-            computerScore++
-        } else if (result === 'humano') { 
-            humanScore++    
-        }
-        else { console.log('Empate')
-            humanScore++
-            computerScore++
-        }
-
-        console.log(`Rodada numero ${rounds + 1}: Seu Score ${humanScore}, Computador ${computerScore}`);
-    }
-    console.log(`Final: Seu Score ${humanScore}, Computador ${computerScore}`);
-}
- */
-
-
-
-const element = document.querySelectorAll("button.jogada");
-
-    for (var i = 0; i <element.length; i++) {
-        element[i].addEventListener("click",getHumanChoice)
-    }
-
