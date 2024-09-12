@@ -39,7 +39,8 @@ buttons.forEach(button => {
                 }
             } /* Esse else fecha o if la de Cima esse => 
                 if (rodadaAtual <= totalRodadas) { */
-        } else {
+        } // Se nao tiver mais rodadas roda esse else 
+        else {
             console.log("O jogo terminou. Recarregue a página para jogar novamente.");
         }
     });
